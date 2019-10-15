@@ -6,12 +6,12 @@ simple js script for validate form input
 example
 ```php
 <form name="formname">
-<input data-type="name"required="" type="text">
-<input type="name" required="" type="text">
-<input data-pattern="\d*" required="" type="text">
-<input pattern="\d*" required="" type="text">
-<button data-click="funk(this)"></button>
-<input type='button'>
+  <input data-type="name"required="" type="text">
+  <input type="name" required="" type="text">
+  <input data-pattern="\d*" required="" type="text">
+  <input pattern="\d*" required="" type="text">
+  <button data-click="funk(this)"></button>
+  <input type='button'>
 </form>
 <input data-click="funk(this)" type='submit' form="formname">
 ```
