@@ -5,9 +5,17 @@ $rule.float = { 'regexp': /\-?\d+(\.\d{0,})?/, 'name': 'дробное числ�
 $rule.name = { 'regexp': /^[а-яА-ЯёЁa-zA-Z]+$/i, 'name': 'имя' }
 $rule.email = { 'regexp': /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/i, 'name': 'email' }
 $rule.phone = { 'regexp': /\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})? ?(\w{1,10}\s?\d{1,6})?/i, 'name': 'телефон' }
-
+var $style = {
+	'width': 'fit - content',
+	'z-index': 9999,
+	'background': '#b5b5b5',
+	'color': '#20272F',
+	'padding': '2px 8px',
+	'position': 'absolute',
+	'border-radius': '10px'
+}
 jQuery(document).ready(function($) {
-    $("form button,form input[type='button'],input[type='submit']").on('click',
+    $("form button,form input[type='button'],input[type='submit'],input[form],button[form]").on('click',
         function(t) {
             var test = [];
             var selecter
@@ -24,16 +32,8 @@ jQuery(document).ready(function($) {
                 if (x === false || x == '' || x == 'undefind') {
                     // console.log('X')
                     var tooltip = $('<span>', {
-                        css: {
-                            'width': 'fit - content',
-                            'z-index': 9999,
-                            'background': '#b5b5b5',
-                            'color': '#20272F',
-                            'padding': '2px 8px',
-                            'position': 'absolute',
-                            'border-radius': '10px'
-                        },
-                        html: '<i class="fas fa-exclamation-circle" style="color:gold;"></i>Поле не заполнено '
+                        css: $style,
+                        html: '<i class="fas fa-exclamation-circle" style="color:gold;"></i> Поле не заполнено '
                     }).appendTo('body');
                     $(tooltip).offset({
                         top: $(element).offset().top - $(tooltip).height() - 5,
@@ -75,14 +75,7 @@ jQuery(document).ready(function($) {
                         if (!er) {
                             var name = $rule[type].name ? $rule[type].name : 'то что нужно'
                             var tooltip = $('<span>', {
-                                css: {
-                                    'width': 'fit - content',
-                                    'z-index': 9999,
-                                    'background': '#b5b5b5',
-                                    'color': '#20272F',
-                                    'padding': '5px',
-                                    'border-radius': '2px'
-                                },
+                                css: $style,
                                 html: '<i class="fas fa-exclamation-circle" style="color:gold;"></i> это не похоже на ' + name
                             }).appendTo('body');
                             $(tooltip).offset({
