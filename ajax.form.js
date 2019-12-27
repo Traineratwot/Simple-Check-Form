@@ -1,13 +1,14 @@
 $(document).ready(function () {
 	$('form').submit(function (event) {
-		var json;
-		var form = new FormData(this);
+		var json, bup;
+		var form = this;
+		var FormD = new FormData(form);
 		event.preventDefault();
 		$.ajax({
-			type: $(this).attr('method'),
-			url: $(this).attr('action'),
-			data: form,
-			dataType: 'json',
+			type: $(form).attr('method'),
+			url: $(form).attr('action'),
+			data: FormD,
+			dataType: "json",
 			contentType: false,
 			cache: false,
 			processData: false,
@@ -16,8 +17,8 @@ $(document).ready(function () {
 					window.location.href = json.url;
 				}
 				if (json.msg) {
-					var bup;
-					if (json.msg.duration) {
+
+					if (json.msg.duration && !bup) {
 						bup = $(json.msg.elem).html();
 					}
 					$(json.msg.elem).html(json.msg.text);
@@ -29,6 +30,7 @@ $(document).ready(function () {
 				} else {
 					console.log(json);
 				}
+				$(form)[0].reset();
 			},
 		});
 	});
