@@ -35,3 +35,4 @@ $(document).ready(function () {
 		});
 	});
 });
+//return json_encode(['msg' => ['text' => 'Запрос отправлен', 'elem' => '#button_so', 'duration' => 1000]], 256);
