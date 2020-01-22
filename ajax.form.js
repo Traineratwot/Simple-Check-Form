@@ -15,6 +15,11 @@ $(document).ready(function () {
 			success: function (json) {
 				if (json.url) {
 					window.location.href = json.url;
+					
+				}
+				
+				if(json.replace){
+					$(json.replace.elem).html(json.replace.text);
 				}
 				if (json.msg) {
 
@@ -30,7 +35,10 @@ $(document).ready(function () {
 				} else {
 					console.log(json);
 				}
-				$(form)[0].reset();
+				if(json.reset !== 0){
+				    $(form)[0].reset();
+				}
+				
 			},
 		});
 	});
