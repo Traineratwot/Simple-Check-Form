@@ -83,14 +83,15 @@ jQuery(document).ready(function ($) {
 				var Vlist = false;
 				var reqlist = $(selecter).attr('data-required').split(',')
 				reqlist.forEach(elemselec => {
-					let x = $(elemselec).val()
+					var x = $(elemselec).val()
 					if (x !== false && x != '' && x != 'undefind') {
 						Vlist = true
 					}
 				});
 				if (!Vlist) {
 					reqlist.forEach(elemselec => {
-						let x = $(elemselec).val()
+						var x = $(elemselec).val()
+						var type = $(elemselec).attr('data-type') ? $(elemselec).attr('data-type') : $(elemselec).attr('type');
 						switch (type) {
 							case 'checkbox':
 								if (!$(elemselec).prop('checked')) {
