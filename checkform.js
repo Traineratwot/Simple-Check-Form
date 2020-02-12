@@ -77,7 +77,39 @@ jQuery(document).ready(function ($) {
 							break;
 					}
 				}
+
 			});
+			if ($(selecter).attr('data-required')) {
+				var Vlist = false;
+				var reqlist = $(selecter).attr('data-required').split(',')
+				reqlist.forEach(elemselec => {
+					let x = $(elemselec).val()
+					if (x !== false && x != '' && x != 'undefind') {
+						Vlist = true
+					}
+				});
+				if (!Vlist) {
+					reqlist.forEach(elemselec => {
+						let x = $(elemselec).val()
+						switch (type) {
+							case 'checkbox':
+								if (!$(elemselec).prop('checked')) {
+									attention(elemselec, '🛑 Что-то из этого должно быть отмеченно это');
+									test.push(1);
+								}
+								break;
+							default:
+								if (x === false || x == '' || x == 'undefind') {
+									// console.log('X')
+									attention(elemselec, '🛑 Что-то из этого должно быть заполнено');
+									test.push(1);
+								}
+								break;
+						}
+					});
+
+				}
+			}
 			if (test.indexOf(1) == -1) {
 				eval($(t.currentTarget).attr('data-click'));
 			} else {
