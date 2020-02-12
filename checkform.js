@@ -95,7 +95,7 @@ jQuery(document).ready(function ($) {
 						switch (type) {
 							case 'checkbox':
 								if (!$(elemselec).prop('checked')) {
-									attention(elemselec, '🛑 Что-то из этого должно быть отмеченно это');
+									attention(elemselec, '🛑 Что-то из этого должно быть отмеченно');
 									test.push(1);
 								}
 								break;
