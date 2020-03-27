@@ -112,9 +112,14 @@ jQuery(document).ready(function ($) {
 				}
 			}
 			if (test.indexOf(1) == -1) {
-				eval($(t.currentTarget).attr('data-click'));
+				if ($(t.currentTarget).attr('data-click')) {
+					eval($(t.currentTarget).attr('data-click'))
+					return false
+				} else {
+					return true
+				}
 			} else {
-				return false;
+				return false
 			}
 		}
 	);
