@@ -16,7 +16,7 @@ var $style = {
 }
 function checkform() {
 	$('form button[data-submit],form input[type=button],input[type=submit],input[form],button[form]').on('click',
-		function (event) {
+		function (t) {
 			var test = []
 			var selecter
 			if ($(this).attr('form')) {
@@ -114,13 +114,13 @@ function checkform() {
 			if (test.indexOf(1) == -1) {
 				if ($(t.currentTarget).attr('data-click')) {
 					eval($(t.currentTarget).attr('data-click'))
-					event.preventDefault()
+					t.preventDefault()
 					return false
 				} else {
 					return true
 				}
 			} else {
-				event.preventDefault()
+				t.preventDefault()
 				return false
 			}
 		}
