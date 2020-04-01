@@ -15,7 +15,7 @@ var $style = {
 	'border-radius': '10px'
 }
 function checkform() {
-	$('form button[data-submit],form input[type=button],input[type=submit],input[form],button[form]').on('click',
+	$('form button[data-submit],form input[type=button][data-submit],input[type=submit],input[form],button[form]').on('click',
 		function (t) {
 			var test = []
 			var selecter
