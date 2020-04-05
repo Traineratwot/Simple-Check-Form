@@ -3,6 +3,7 @@ $(document).ready(function () {
 		var json, bup;
 		var form = this;
 		var FormD = new FormData(form);
+		FormD.append($(form).attr('data-action'))
 		event.preventDefault();
 		$.ajax({
 			type: $(form).attr('method'),
@@ -17,12 +18,10 @@ $(document).ready(function () {
 					window.location.href = json.url;
 					
 				}
-				
 				if(json.replace){
 					$(json.replace.elem).html(json.replace.text);
 				}
 				if (json.msg) {
-
 					if (json.msg.duration && !bup) {
 						bup = $(json.msg.elem).html();
 					}
