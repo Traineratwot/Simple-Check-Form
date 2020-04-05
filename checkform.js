@@ -20,16 +20,16 @@ function checkform() {
 		function(t) {
 			var attention = new Attention
 			var test = []
-			var selecter
+			var selector
 			if($(this).attr('form')) {
-				selecter = $('form[name=' + $(this).attr('form') + ']')
+				selector = $('form[name=' + $(this).attr('form') + ']')
 			} else if($(this)[0].form) {
-				selecter = $(this)[0].form
+				selector = $(this)[0].form
 			} else {
 				console.warn('где форма?')
 				return true
 			}
-			$(selecter).find('input,textarea').each(function(index, element) {
+			$(selector).find('input,textarea').each(function(index, element) {
 				var x = $(element).val()
 				type = $(element).attr('data-type') ? $(element).attr('data-type') : $(element).attr('type')
 				pattern = $(element).attr('data-pattern') ? $(element).attr('data-pattern') : $(element).attr('pattern')
@@ -102,9 +102,9 @@ function checkform() {
 					}
 				}
 			})
-			if($(selecter).attr('data-required')) {
+			if($(selector).attr('data-required')) {
 				var Vlist = false
-				var reqlist = $(selecter).attr('data-required').split(',')
+				var reqlist = $(selector).attr('data-required').split(',')
 				reqlist.forEach(elemselec => {
 					var x = $(elemselec).val()
 					if(x !== false && x != '' && x != 'undefind') {
